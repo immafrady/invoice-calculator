@@ -18,6 +18,11 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@env/*": ["src/environment/*"],
+      "@utils": ["src/app/shared/utils/index"],
+      "@enums": ["src/app/shared/enums/index"]
+    }
   }
 }

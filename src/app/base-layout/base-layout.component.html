@@ -1,0 +1,5 @@
+<app-mobile-view *ngIf="isMobile; else web_view_component"></app-mobile-view>
+<ng-template #web_view_component>
+  <app-web-view ></app-web-view>
+</ng-template>
+
