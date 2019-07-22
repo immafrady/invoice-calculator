@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { BaseLayoutDirective } from './base-layout.directive';
+import { MobileViewComponent } from './mobile-view/mobile-view.component';
+import { WebViewComponent } from './web-view/web-view.component';
 
 @Component({
   selector: 'app-base-layout',
@@ -8,22 +11,36 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 })
 export class BaseLayoutComponent implements OnInit {
 
-  private isMobile: boolean;
+  @ViewChild(BaseLayoutDirective, { static: true })
+  appBaseLayout: BaseLayoutDirective;
+
 
   constructor(
-    breakpointObserver: BreakpointObserver
-  ) {
-    breakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private componentFactoryResolver: ComponentFactoryResolver
+  ) {}
+
+  ngOnInit() {
+    this.breakpointObserver
       .observe([
-      Breakpoints.HandsetPortrait,
-      Breakpoints.HandsetLandscape
+        Breakpoints.HandsetPortrait,
+        Breakpoints.HandsetLandscape
       ])
       .subscribe(result => {
-        this.isMobile = result.matches;
+        this.loadComponent(result.matches);
       });
   }
 
-  ngOnInit() {
+  loadComponent(isMobile) {
+    let componentFactory;
+    if (isMobile) {
+      componentFactory = this.componentFactoryResolver.resolveComponentFactory(MobileViewComponent);
+    } else {
+      componentFactory = this.componentFactoryResolver.resolveComponentFactory(WebViewComponent);
+    }
+    const viewContainerRef = this.appBaseLayout.viewContainerRef;
+    viewContainerRef.clear();
+    viewContainerRef.createComponent(componentFactory);
   }
 
 }
