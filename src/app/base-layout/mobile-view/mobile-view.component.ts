@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { RouteItem } from '../route-item';
 import { BaseView } from '../base-view';
+import { MatDrawer } from '@angular/material';
+import { Observable, of, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-mobile-view',
@@ -9,11 +11,15 @@ import { BaseView } from '../base-view';
 })
 export class MobileViewComponent implements OnInit, BaseView {
 
-  constructor() { }
+  drawerStatus = false;
+
+  subjectDrawerOpened = new Subject<boolean>();
 
   private routeItems: RouteItem[];
 
   route: object;
+
+  constructor() { }
 
   ngOnInit() {
   }

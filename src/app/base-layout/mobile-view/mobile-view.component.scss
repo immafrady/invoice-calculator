@@ -1,1 +1,34 @@
-@import "../base-layout.component";
+  .drawer-container {
+    height: 100%;
+    background-color: transparent;
+
+    .side-container {
+      width: 40vw;
+      max-width: 200px;
+    }
+    mat-drawer-content {
+      padding: 10px;
+      .title-wrapper {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        .switch-icon {
+          margin-right: 20px;
+          .drawer-icon {
+            color: #fff;
+          }
+        }
+        h3 {
+          color: #fff;
+        }
+      }
+
+      .content-wrapper {
+        border-radius: 5px;
+        padding: 10px;
+        background-color: #fff;
+      }
+    }
+
+
+  }

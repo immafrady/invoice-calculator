@@ -1,3 +1,17 @@
-<div class="app-container">
-mobile-view
-</div>
+<mat-drawer-container class="drawer-container">
+  <mat-drawer #drawer class="side-container" mode="push">
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="title-wrapper">
+      <button class="switch-icon" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon [ngClass]="{'opened': drawerStatus}" class="drawer-icon">list</mat-icon>
+      </button>
+      <h3>哈哈</h3>
+    </div>
+    <div class="content-wrapper">
+      111
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+
+</mat-drawer-container>
