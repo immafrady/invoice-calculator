@@ -7,14 +7,18 @@
 
     mat-drawer {
       background-color: $normalBGC;
-      width: 75vw;
+      width: 70vw;
       max-width: 300px;
       padding: $sidePadding;
       .drawer-wrapper {
-        padding: 5px;
-        border-radius: $blockBorderRadius;
-        background-color: #fff;
+        @mixin side-item {
+          padding: 5px;
+          border-radius: $blockBorderRadius;
+          margin-bottom: $contentGap;
+          background-color: #fff;
+        }
         .logo-block {
+          @include side-item;
           display: flex;
           align-items: center;
           font-size: $mainTitleFSZ;
@@ -22,8 +26,11 @@
           font-family: STKaiti, "Kaiti SC", "Kaiti TC", serif;
           img {
             @include square(50px);
-            margin-right: 10px;
+            margin-right: $contentGap;
           }
+        }
+        mat-action-list {
+          @include side-item;
         }
       }
     }
@@ -46,7 +53,7 @@
 
       .content-wrapper {
         border-radius: $blockBorderRadius;
-        padding: 10px;
+        padding: $sidePadding;
         background-color: $normalBGC;
       }
     }

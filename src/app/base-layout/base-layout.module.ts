@@ -4,7 +4,7 @@ import { BaseLayoutComponent } from './base-layout.component';
 import { MobileViewComponent } from './mobile-view/mobile-view.component';
 import { WebViewComponent } from './web-view/web-view.component';
 import { BaseLayoutDirective } from './base-layout.directive';
-import { MatButtonModule, MatIconModule, MatSidenavModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatListModule, MatSidenavModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -23,7 +23,8 @@ import { RouterModule } from '@angular/router';
     MatSidenavModule,
     MatButtonModule,
     MatIconModule,
-    RouterModule
+    RouterModule,
+    MatListModule
   ]
 })
 export class BaseLayoutModule { }
