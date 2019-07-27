@@ -8,15 +8,21 @@ import { BaseView } from '../base-view';
   styleUrls: ['./web-view.component.scss']
 })
 export class WebViewComponent implements OnInit, BaseView {
-
-  constructor() { }
+  @Input() appName: string;
+  @Input() logoPath: string;
 
   @Input()
   private routeItems: RouteItem[];
 
   route: object;
 
+  constructor() { }
+
+
   ngOnInit() {
   }
+
+
+
 
 }

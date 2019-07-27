@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { BaseLayoutDirective } from './base-layout.directive';
 import { MobileViewComponent } from './mobile-view/mobile-view.component';
 import { WebViewComponent } from './web-view/web-view.component';
+import { BaseView } from './base-view';
 
 @Component({
   selector: 'app-base-layout',
@@ -13,6 +14,8 @@ export class BaseLayoutComponent implements OnInit {
 
   @ViewChild(BaseLayoutDirective, { static: true })
   appBaseLayout: BaseLayoutDirective;
+
+  title = '';
 
 
   constructor(
@@ -40,7 +43,9 @@ export class BaseLayoutComponent implements OnInit {
     }
     const viewContainerRef = this.appBaseLayout.viewContainerRef;
     viewContainerRef.clear();
-    viewContainerRef.createComponent(componentFactory);
+    const containerRef = viewContainerRef.createComponent(componentFactory);
+    (containerRef.instance as BaseView).appName = '报销计算器';
+    (containerRef.instance as BaseView).logoPath = 'assets/images/logo-small.png';
   }
 
 }

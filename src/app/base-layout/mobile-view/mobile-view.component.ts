@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { RouteItem } from '../route-item';
+import { Component, Input, OnInit } from '@angular/core';
 import { BaseView } from '../base-view';
 import { ActivatedRoute } from '@angular/router';
 import { RouteData } from '../../shared/interfaces/route-data';
@@ -11,8 +10,10 @@ import { RouteData } from '../../shared/interfaces/route-data';
 })
 export class MobileViewComponent implements OnInit, BaseView {
 
+  @Input() appName: string;
+  @Input() logoPath: string;
+
   private title: string;
-  private routeItems: RouteItem[];
 
   route: object;
 
@@ -26,5 +27,6 @@ export class MobileViewComponent implements OnInit, BaseView {
 
   ngOnInit() {
   }
+
 
 }

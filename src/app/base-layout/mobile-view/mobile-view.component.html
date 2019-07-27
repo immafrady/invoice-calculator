@@ -2,8 +2,8 @@
   <mat-drawer #drawer mode="push">
     <div class="drawer-wrapper">
       <div class="logo-block">
-        <img src="assets/images/logo-small.png" alt="">
-        报销计算器
+        <img [src]="logoPath" alt="">
+        {{ appName }}
       </div>
       <mat-action-list>
         <button mat-list-item (click)="save()"> Save </button>
