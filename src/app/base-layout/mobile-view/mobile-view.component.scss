@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
   .drawer-container {
     height: 100%;
@@ -6,17 +7,34 @@
 
     mat-drawer {
       background-color: $normalBGC;
-      width: 40vw;
-      max-width: 200px;
+      width: 75vw;
+      max-width: 300px;
+      padding: $sidePadding;
+      .drawer-wrapper {
+        padding: 5px;
+        border-radius: $blockBorderRadius;
+        background-color: #fff;
+        .logo-block {
+          display: flex;
+          align-items: center;
+          font-size: $mainTitleFSZ;
+          color: $emphasisText;
+          font-family: STKaiti, "Kaiti SC", "Kaiti TC", serif;
+          img {
+            @include square(50px);
+            margin-right: 10px;
+          }
+        }
+      }
     }
     mat-drawer-content {
-      padding: 10px;
+      padding: $sidePadding;
       .title-wrapper {
         display: flex;
         align-items: center;
-        margin-bottom: 10px;
+        margin-bottom: $contentGap;
         .switch-icon {
-          margin-right: 10px;
+          margin-right: $contentGap;
           .drawer-icon {
             color: #fff;
           }
@@ -27,7 +45,7 @@
       }
 
       .content-wrapper {
-        border-radius: 5px;
+        border-radius: $blockBorderRadius;
         padding: 10px;
         background-color: $normalBGC;
       }

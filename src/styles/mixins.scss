@@ -1,0 +1,10 @@
+@mixin square($l) {
+  width: $l;
+  height: $l;
+  line-height: $l;
+}
+
+@mixin round($l) {
+  @include square($l);
+  border-radius: $l / 2;
+}
