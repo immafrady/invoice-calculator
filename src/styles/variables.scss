@@ -1,5 +1,7 @@
-$themeColor: #387e80;
-$subThemeColor: #3c6080;
+@import '~@angular/material/theming';
+
+$themeColor: map-get($mat-indigo, 200);
+$subThemeColor: map-get($mat-indigo, 900);
 
 $normalBGC: #f0f0f0;
 $contentBGC: #fdfdfd;

@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { RouteItem } from '../route-item';
 import { BaseView } from '../base-view';
+import { MatTabNav } from '@angular/material';
 
 @Component({
   selector: 'app-web-view',
@@ -10,6 +11,14 @@ import { BaseView } from '../base-view';
 export class WebViewComponent implements OnInit, BaseView {
   @Input() appName: string;
   @Input() logoPath: string;
+
+  private routes: RouteItem[] = [{
+    path: '/aa',
+    label: 'AA'
+  }, {
+    path: '/bb',
+    label: 'BB'
+  }];
 
   @Input()
   private routeItems: RouteItem[];
@@ -22,7 +31,8 @@ export class WebViewComponent implements OnInit, BaseView {
   ngOnInit() {
   }
 
-
+  handleTabChange(ev) {
+  }
 
 
 }

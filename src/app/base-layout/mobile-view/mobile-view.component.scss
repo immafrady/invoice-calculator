@@ -35,7 +35,9 @@
       }
     }
     mat-drawer-content {
+      position: relative;
       padding: $sidePadding;
+      box-sizing: border-box;
       .title-wrapper {
         display: flex;
         align-items: center;
@@ -58,5 +60,9 @@
       }
     }
 
-
+    button[mat-mini-fab] {
+      position: absolute;
+      right: $sidePadding;
+      bottom: $sidePadding;
+    }
   }

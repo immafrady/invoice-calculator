@@ -2,6 +2,8 @@
 @import "variables";
 @import "mixins";
 
+$logoHeight: 50px; // logo的高度
+
 .web-container {
   width: 100%;
   height: 100%;
@@ -9,11 +11,33 @@
   align-items: center;
   justify-content: center;
   overflow-x: auto;
+  padding: $logoHeight * 1.2;
   .main-wrapper {
+    position: relative;
     background-color: $normalBGC;
     padding: $sidePadding;
     border-radius: $blockBorderRadius;
-    min-width: 900px;
-    min-height: 600px;
+    min-width: 1000px;
+    min-height: 750px;
+    .logo-block {
+      position: absolute;
+      top: -$logoHeight;
+      left: 0;
+      display: flex;
+      align-items: center;
+      font-size: $mainTitleFSZ;
+      color: #fff;
+      font-family: STKaiti, "Kaiti SC", "Kaiti TC", serif;
+      img {
+        @include square($logoHeight);
+        margin-right: $contentGap;
+      }
+    }
+
+    button[mat-mini-fab] {
+      position: absolute;
+      right: $sidePadding;
+      bottom: $sidePadding;
+    }
   }
 }

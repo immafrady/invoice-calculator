@@ -26,10 +26,11 @@ export class BaseLayoutComponent implements OnInit {
   ngOnInit() {
     this.breakpointObserver
       .observe([
-        Breakpoints.HandsetPortrait,
-        Breakpoints.HandsetLandscape
+        Breakpoints.Handset,
+        Breakpoints.Tablet
       ])
       .subscribe(result => {
+        console.log(result)
         this.loadComponent(result.matches);
       });
   }

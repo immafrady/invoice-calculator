@@ -1,5 +1,23 @@
 <div class="web-container">
   <div class="main-wrapper">
-    {{ title }}
+    <div class="logo-block">
+      <img [src]="logoPath" alt="">
+      {{ appName }}
+    </div>
+    <nav mat-tab-nav-bar >
+      <a mat-tab-link
+         routerLinkActive
+         #mtl="routerLinkActive"
+         *ngFor="let route of routes"
+         [routerLink]="route.path"
+         [active]="mtl.isActive"
+        >
+        {{ route.label }}
+      </a>
+    </nav>
+    <router-outlet></router-outlet>
+    <button mat-mini-fab>
+      <mat-icon>add</mat-icon>
+    </button>
   </div>
 </div>
