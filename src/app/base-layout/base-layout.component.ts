@@ -30,7 +30,6 @@ export class BaseLayoutComponent implements OnInit {
         Breakpoints.Tablet
       ])
       .subscribe(result => {
-        console.log(result)
         this.loadComponent(result.matches);
       });
   }

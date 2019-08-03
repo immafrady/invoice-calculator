@@ -9,7 +9,10 @@ const routes: Routes = [
     component: BaseLayoutComponent,
     data: {
       title: '首页'
-    } as RouteData
+    } as RouteData,
+    children: [
+
+    ]
   }
 ];
 
