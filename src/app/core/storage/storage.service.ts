@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { StorageLabel } from '@enums';
-import { decodeData, encodeData } from '@shared';
+import { decodeData, encodeData } from '@utils';
 
 interface DbPair {
   name: string;
@@ -17,7 +17,6 @@ export class StorageService {
   }
 
   set dbNameList(list: DbPair[]) {
-    console.log(encodeData(list));
     window.localStorage.setItem(StorageLabel.DB_NAMES, encodeData(list));
   }
   get dbNameList() {

@@ -21,7 +21,7 @@
     ],
     "paths": {
       "@env/*": ["src/environment/*"],
-      "@shared": ["src/app/shared/index"],
+      "@utils": ["src/app/shared/utils/index"],
       "@enums": ["src/app/shared/enums/index"]
     }
   }
