@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>您好新用户</h1>
+<div mat-dialog-content>
+  <p>请设置您的用户名</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data.animal">Ok</button>
+</div>

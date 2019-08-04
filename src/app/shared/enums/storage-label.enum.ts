@@ -1,3 +1,4 @@
 export enum StorageLabel {
-  DB_NAME = 'DB_NAME'
+  DB_NAMES = 'DB_NAMES',
+  DB_CURRENT = 'DB_CURRENT'
 }

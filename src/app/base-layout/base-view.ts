@@ -1,5 +1,13 @@
-export interface BaseView {
+import { EventEmitter, Input, Output } from '@angular/core';
+
+export class BaseView {
+
   route?: object;
-  appName: string;
-  logoPath: string;
+  @Input() appName: string;
+  @Input() logoPath: string;
+
+  @Output()
+  fabClick = new EventEmitter<boolean>();
+
+  clickFab(): void {}
 }

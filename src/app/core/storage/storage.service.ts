@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { StorageLabel } from '@enums';
+import { decodeData, encodeData } from '@shared';
 
 interface DbPair {
   name: string;
@@ -12,19 +13,27 @@ interface DbPair {
 export class StorageService {
 
   constructor() {
-    StorageService.initStorage();
+    this.initStorage();
   }
 
-  static set dbNameList(list: DbPair[]) {
-    window.localStorage.setItem(StorageLabel.DB_NAME, JSON.stringify(list));
+  set dbNameList(list: DbPair[]) {
+    console.log(encodeData(list));
+    window.localStorage.setItem(StorageLabel.DB_NAMES, encodeData(list));
   }
-  static get dbNameList() {
-    return JSON.parse(window.localStorage.getItem(StorageLabel.DB_NAME));
+  get dbNameList() {
+    return decodeData(window.localStorage.getItem(StorageLabel.DB_NAMES));
   }
 
-  static initStorage() {
-    if (!StorageService.dbNameList) {
-      StorageService.dbNameList = [];
+  set dbCurrent(db: DbPair) {
+    window.localStorage.setItem(StorageLabel.DB_CURRENT, JSON.stringify(db));
+  }
+  get dbCurrent() {
+    return JSON.parse(window.localStorage.getItem(StorageLabel.DB_CURRENT));
+  }
+
+  initStorage() {
+    if (!this.dbNameList) {
+      this.dbNameList = [];
     }
   }
 }

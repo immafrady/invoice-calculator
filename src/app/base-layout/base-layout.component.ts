@@ -46,6 +46,9 @@ export class BaseLayoutComponent implements OnInit {
     const containerRef = viewContainerRef.createComponent(componentFactory);
     (containerRef.instance as BaseView).appName = '报销计算器';
     (containerRef.instance as BaseView).logoPath = 'assets/images/logo-small.png';
+    (containerRef.instance as BaseView).fabClick.subscribe(() => {{
+
+    }});
   }
 
 }

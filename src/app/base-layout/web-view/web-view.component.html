@@ -16,8 +16,13 @@
       </a>
     </nav>
     <router-outlet></router-outlet>
-    <button mat-fab>
+    <button mat-button mat-fab [matMenuTriggerFor]="menu" >
       <mat-icon>add</mat-icon>
     </button>
+    <mat-menu #menu="matMenu" xPosition="before" yPosition="above">
+      <button mat-menu-item>item 1</button>
+      <button mat-menu-item>2</button>
+      <button mat-menu-item>3</button>
+    </mat-menu>
   </div>
 </div>
