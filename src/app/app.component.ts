@@ -1,6 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { StorageService } from './core/storage/storage.service';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -14,18 +14,14 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (!this.storageService.dbNameList.length) {
+    if (!this.storageService.isNew()) {
       this.openGlobalDialog();
     }
   }
 
   openGlobalDialog(): void {
     const dialogRef = this.dialog.open(NewDatabaseDialogComponent, {
-      hasBackdrop: true,
-      data: {
-        animal: 'haha',
-        name: '123'
-      }
+      hasBackdrop: true
     });
   }
 }
@@ -36,7 +32,27 @@ export class AppComponent implements OnInit {
 })
 export class NewDatabaseDialogComponent {
   constructor(
+    private storageService: StorageService,
     public dialogRef: MatDialogRef<NewDatabaseDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    public snackBar: MatSnackBar
   ) {}
+
+  @Input()
+  dbName: string;
+
+  saveDb() {
+    const db = {
+      name: this.dbName,
+      version: 1
+    };
+
+    try {
+      this.storageService.addNewDatabase(db);
+      this.storageService.setCurrentDatabase(db);
+    } catch (e) {
+      this.snackBar.open(e.message, '关闭');
+    }
+
+    this.dialogRef.close();
+  }
 }

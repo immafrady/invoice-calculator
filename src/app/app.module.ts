@@ -5,7 +5,7 @@ import { AppRoutesModule } from './router/app-routes.module';
 import { AppComponent, NewDatabaseDialogComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {BaseLayoutModule} from './base-layout/base-layout.module';
-import { MAT_DIALOG_DEFAULT_OPTIONS, MatButtonModule, MatInputModule } from '@angular/material';
+import { MAT_DIALOG_DEFAULT_OPTIONS, MatButtonModule, MatInputModule, MatSnackBarModule } from '@angular/material';
 import { CoreModule } from './core/core.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -28,7 +28,8 @@ import { SharedModule } from './shared/shared.module';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    SharedModule
+    SharedModule,
+    MatSnackBarModule
   ],
   entryComponents: [
     NewDatabaseDialogComponent

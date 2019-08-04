@@ -2,9 +2,9 @@
 <div mat-dialog-content>
   <p>请设置您的用户名</p>
   <mat-form-field>
-    <input matInput [(ngModel)]="data.animal">
+    <input matInput [(ngModel)]="dbName">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="data.animal">Ok</button>
+  <button mat-button (click)="saveDb()">Ok</button>
 </div>
