@@ -41,14 +41,9 @@ export class NewDatabaseDialogComponent {
   dbName: string;
 
   saveDb() {
-    const db = {
-      name: this.dbName,
-      version: 1
-    };
-
     try {
-      this.storageService.addNewDatabase(db);
-      this.storageService.setCurrentDatabase(db);
+      this.storageService.addNewDatabase(this.dbName);
+      this.storageService.setCurrentDatabase(this.dbName);
     } catch (e) {
       this.snackBar.open(e.message, '关闭');
     }

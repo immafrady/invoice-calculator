@@ -15,6 +15,7 @@ export class StorageService {
     this.initStorage();
   }
 
+  // todo 修改成方法
   private set dbNameList(list: DbPair[]) {
     window.localStorage.setItem(StorageLabel.DB_NAMES, encodeData(list || []));
   }
@@ -36,15 +37,18 @@ export class StorageService {
     }
   }
 
-  addNewDatabase(db: DbPair) {
+  addNewDatabase(dbName: string) {
     const list = this.dbNameList;
     const filtered = list.filter(item => {
-      return item.name === db.name;
+      return item.name === dbName;
     });
     if (!!filtered.length) {
       throw new Error('该用户已存在，请勿重复添加');
     } else {
-      list.push(db);
+      list.push({
+        name: dbName,
+        version: 1
+      });
       this.dbNameList = list;
     }
   }
@@ -55,11 +59,20 @@ export class StorageService {
     return !!filtered.length;
   }
 
-  setCurrentDatabase(db: DbPair) {
-    this.dbCurrent = db.name;
+  setCurrentDatabase(dbName: string) {
+    this.dbCurrent = dbName;
   }
   getCurrentDatabase(): DbPair {
     return this.dbNameList.find(item => item.name === this.dbCurrent);
+  }
+  upgradeCurrentDatabase(): void {
+    const list = this.dbNameList;
+    list.forEach(item => {
+      if (item.name === this.dbCurrent) {
+        item.version++;
+      }
+    });
+    this.dbNameList = list;
   }
 
   isNew() {
